@@ -18,7 +18,7 @@ class MvpKotlinApplication : Application() {
     }
 
     companion object {
-        var instence: MvpKotlinApplication? = null
+        lateinit var instence: MvpKotlinApplication
             private set
     }
 
