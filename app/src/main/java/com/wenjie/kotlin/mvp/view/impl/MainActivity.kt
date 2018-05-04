@@ -27,17 +27,17 @@ class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, 
         }
     }
 
-    private var dialog: Dialog? = null
+    private lateinit var dialog: Dialog
 
-    private var etUserName: EditText? = null
-    private var etPassword: EditText? = null
-    private var textView: TextView? = null
-    private var btnLogin: Button? = null
-    private var btnGetMe: Button? = null
-    private var tvUserdetail: TextView? = null
-    private var tvhebing1: TextView? = null
-    private var tvhebing2: TextView? = null
-    private var btnHebing: Button? = null
+    private lateinit var etUserName: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var textView: TextView
+    private lateinit var btnLogin: Button
+    private lateinit var btnGetMe: Button
+    private lateinit var tvUserdetail: TextView
+    private lateinit var tvhebing1: TextView
+    private lateinit var tvhebing2: TextView
+    private lateinit var btnHebing: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,21 +53,21 @@ class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, 
         tvhebing2 = findViewById(R.id.tv_hebing2)
         btnHebing = findViewById(R.id.btn_hebing)
 
-        btnGetMe!!.setOnClickListener(this@MainActivity)
-        btnLogin!!.setOnClickListener(this@MainActivity)
-        btnHebing!!.setOnClickListener(this@MainActivity)
+        btnGetMe.setOnClickListener(this@MainActivity)
+        btnLogin.setOnClickListener(this@MainActivity)
+        btnHebing.setOnClickListener(this@MainActivity)
     }
 
     override fun getDialog(): Dialog {
-        return dialog!!
+        return dialog
     }
 
     override fun getUserName(): String {
-        return etUserName!!.text.toString()
+        return etUserName.text.toString()
     }
 
     override fun getPassword(): String {
-        return etPassword!!.text.toString()
+        return etPassword.text.toString()
     }
 
     override fun showMsg(msg: String) {
@@ -75,7 +75,7 @@ class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, 
     }
 
     override fun setText(result: String) {
-        textView!!.text = result
+        textView.text = result
     }
 
     override fun createPresenter(): LoginPresenter {
@@ -83,12 +83,12 @@ class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, 
     }
 
     override fun setUserDetail(userDetail: UserDetail) {
-        tvUserdetail!!.text = userDetail.toString()
+        tvUserdetail.text = userDetail.toString()
     }
 
     @SuppressLint("SetTextI18n")
     override fun setBebingData(topicsAndNews: TopicsAndNews) {
-        tvhebing1!!.text = "第一个请求${topicsAndNews.news!![0]}"
-        tvhebing2!!.text = "第二个请求${topicsAndNews.topics!![0]}"
+        tvhebing1.text = "第一个请求${topicsAndNews.news!![0]}"
+        tvhebing2.text = "第二个请求${topicsAndNews.topics!![0]}"
     }
 }
