@@ -15,12 +15,12 @@ open class BaseMvpPresenter<V : IBaseMvpView> {
 
     private var weakReferenceView: WeakReference<V>? = null
 
-    public fun attachMvpView(view: V) {
+    fun attachMvpView(view: V) {
         weakReferenceView = WeakReference(view)
         this.mView = weakReferenceView!!.get()
     }
 
-    public fun detachMvpView() {
+    fun detachMvpView() {
         weakReferenceView!!.clear()
         weakReferenceView = null
         mView = null
