@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.wenjie.kotlin.R
 import com.wenjie.kotlin.base.BaseMvpActivity
 import com.wenjie.kotlin.entity.TopicsAndNews
@@ -15,20 +14,12 @@ import com.wenjie.kotlin.entity.UserDetail
 import com.wenjie.kotlin.mvp.presenter.LoginPresenter
 import com.wenjie.kotlin.mvp.view.ILoginView
 import com.wenjie.kotlin.utils.DialogUtils
+import com.wenjie.kotlin.utils.find
+import com.wenjie.kotlin.utils.toast
 
 class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, View.OnClickListener {
 
-
-    override fun onClick(v: View?) {
-        when (v!!.id) {
-            R.id.login -> mPresenter!!.login()
-            R.id.getme -> mPresenter!!.getMe()
-            R.id.btn_hebing -> mPresenter!!.hebing()
-        }
-    }
-
     private lateinit var dialog: Dialog
-
     private lateinit var etUserName: EditText
     private lateinit var etPassword: EditText
     private lateinit var textView: TextView
@@ -43,15 +34,15 @@ class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         dialog = DialogUtils.createLoadingDialog(this@MainActivity, "加载中...")
-        etUserName = findViewById(R.id.username)
-        etPassword = findViewById(R.id.password)
-        textView = findViewById(R.id.result)
-        btnLogin = findViewById(R.id.login)
-        tvUserdetail = findViewById(R.id.userdetail)
-        btnGetMe = findViewById(R.id.getme)
-        tvhebing1 = findViewById(R.id.tv_hebing1)
-        tvhebing2 = findViewById(R.id.tv_hebing2)
-        btnHebing = findViewById(R.id.btn_hebing)
+        etUserName = find(R.id.username)
+        etPassword = find(R.id.password)
+        textView = find(R.id.result)
+        btnLogin = find(R.id.login)
+        tvUserdetail = find(R.id.userdetail)
+        btnGetMe = find(R.id.getme)
+        tvhebing1 = find(R.id.tv_hebing1)
+        tvhebing2 = find(R.id.tv_hebing2)
+        btnHebing = find(R.id.btn_hebing)
 
         btnGetMe.setOnClickListener(this@MainActivity)
         btnLogin.setOnClickListener(this@MainActivity)
@@ -71,7 +62,7 @@ class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, 
     }
 
     override fun showMsg(msg: String) {
-        Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+        toast(msg)
     }
 
     override fun setText(result: String) {
@@ -90,5 +81,13 @@ class MainActivity : BaseMvpActivity<ILoginView, LoginPresenter>(), ILoginView, 
     override fun setBebingData(topicsAndNews: TopicsAndNews) {
         tvhebing1.text = "第一个请求${topicsAndNews.news!![0]}"
         tvhebing2.text = "第二个请求${topicsAndNews.topics!![0]}"
+    }
+
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.login -> mPresenter!!.login()
+            R.id.getme -> mPresenter!!.getMe()
+            R.id.btn_hebing -> mPresenter!!.hebing()
+        }
     }
 }
