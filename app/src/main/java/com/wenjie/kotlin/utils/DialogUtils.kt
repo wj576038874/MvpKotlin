@@ -31,7 +31,7 @@ object DialogUtils {
          */
         val v = inflater.inflate(R.layout.loading_dialog, null)
 
-        val tipTextView: TextView = v.findViewById(R.id.tipTextView)
+        val tipTextView: TextView = v.find(R.id.tipTextView)
         if (!TextUtils.isEmpty(msg)) tipTextView.text = msg
         val loadingDialog = Dialog(context, R.style.loading_dialog)
         loadingDialog.setCancelable(true)
