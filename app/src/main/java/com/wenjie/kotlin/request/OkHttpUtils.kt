@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
  */
 object OkHttpUtils {
 
-    private val cacheUtil: CacheUtil = CacheUtil(MvpKotlinApplication.Companion.instence!!)
+    private val cacheUtil: CacheUtil = CacheUtil(MvpKotlinApplication.Companion.instence)
     private var retrofit: Retrofit? = null
     private var okHttpClient: OkHttpClient? = null
 
