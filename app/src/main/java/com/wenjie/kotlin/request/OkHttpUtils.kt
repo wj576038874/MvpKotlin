@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
  * Date: 2018-05-03 9:42
  * Description:
  */
-object OkHttpUtils { 
+object OkHttpUtils {
 
     private val cacheUtil: CacheUtil = CacheUtil(MvpKotlinApplication.Companion.instence)
     private var retrofit: Retrofit? = null
