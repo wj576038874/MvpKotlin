@@ -1,7 +1,10 @@
 package com.wenjie.kotlin.utils
 
 import android.app.Activity
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import com.wenjie.kotlin.base.MvpKotlinApplication
 
@@ -37,3 +40,4 @@ fun <T : View> View.find(resId: Int): T {
 fun <T : View> Activity.find(resId: Int): T {
     return this.findViewById(resId)
 }
+
